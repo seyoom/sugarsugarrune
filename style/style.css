@@ -1,0 +1,380 @@
+@font-face {
+  font-family: "PyeongChangPeace";
+  src: url("https://cdn.jsdelivr.net/gh/fontbee/font@main/Pc/PyeongChangPeace-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #e8daf3;
+  cursor: none;
+}
+
+.poster {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("../assets/배경 및 프레임 이미지.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 쇼콜라 */
+.chocolat {
+  position: absolute;
+  left: -1.5%;
+  bottom: -12%;
+  width: 46%;
+  height: 105%;
+  z-index: 2;
+  transform-origin: center bottom;
+  transition: transform 0.4s ease;
+}
+
+.chocolat:hover {
+  transform: scale(1.04);
+}
+
+.chocolat .school {
+  position: absolute;
+  width: 105%;
+  height: 105%;
+  left: -7%;
+  bottom: 5%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+
+.chocolat .witch {
+  position: absolute;
+  width: 115%;
+  height: 115%;
+  left: -3%;
+  bottom: 0%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+/* 바닐라 */
+.vanilla {
+  position: absolute;
+  right: -3%;
+  bottom: -15%;
+  width: 46%;
+  height: 106%;
+  z-index: 2;
+  transform-origin: center bottom;
+  transition: transform 0.4s ease;
+}
+
+.vanilla:hover {
+  transform: scale(1.04);
+}
+
+.vanilla .school {
+  position: absolute;
+  width: 96%;
+  height: 96%;
+  right: -5%;
+  bottom: 10%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+
+.vanilla .witch {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  right: -2%;
+  bottom: 3%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+/* 변신 */
+.chocolat.active .school,
+.vanilla.active .school {
+  opacity: 0;
+}
+
+.chocolat.active .witch,
+.vanilla.active .witch {
+  opacity: 1;
+}
+
+.chocolat.image-error .school,
+.vanilla.image-error .school {
+  opacity: 1;
+}
+
+.chocolat.image-error .witch,
+.vanilla.image-error .witch {
+  opacity: 0;
+}
+
+/* 로고 */
+.logo {
+  position: absolute;
+  width: 25%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.1);
+  z-index: 55;
+  transition: transform 0.4s ease;
+}
+
+.logo:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* 요술봉 */
+.mouse-wand {
+  position: fixed;
+  width: 80px;
+  height: auto;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  pointer-events: none;
+  transform: translate(-50%, -15%) rotate(25deg);
+}
+
+/* 기본 문구 */
+.poster-text {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  width: 45%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  text-align: center;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+}
+
+.poster-text h2 {
+  margin: 0;
+  width: 100%;
+  font-family: "PyeongChangPeace", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  color: #e50075;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.poster-text p {
+  margin: 0;
+  width: 100%;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #211725;
+  line-height: 1.35;
+}
+
+.poster.has-selection .poster-text {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 캐릭터 소개 */
+.character-info {
+  position: absolute;
+  left: 50%;
+  width: 42%;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 7;
+  pointer-events: none;
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease,
+    visibility 1.2s ease;
+}
+
+.character-info h3 {
+  margin: 0 0 6px;
+  font-family: "Outfit", sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.character-keyword {
+  margin: 0 0 2px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #5f4967;
+}
+
+.character-description {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #75637b;
+}
+
+.chocolat-info {
+  top: 10%;
+  transform: translate(-50%, 15px);
+}
+
+.chocolat-info h3 {
+  color: #c23e69;
+}
+
+.vanilla-info {
+  top: 76%;
+  transform: translate(-50%, -15px);
+}
+
+.vanilla-info h3 {
+  color: #9269b8;
+}
+
+.character-info.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* 하트 */
+.heart {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+  transform: scale(1);
+  transition: transform 1.9s ease-in;
+}
+
+.heart img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: heartFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translate(-15px, 10px) rotate(-8deg);
+  }
+  50% {
+    transform: translate(15px, -35px) rotate(8deg);
+  }
+  100% {
+    transform: translate(-10px, 15px) rotate(-6deg);
+  }
+}
+/* 하트 위치 */
+.heart-red {
+  left: 6%;
+  top: 6%;
+  width: 135px;
+  height: 135px;
+}
+
+.heart-orange {
+  left: 30%;
+  top: 48%;
+  width: 135px;
+  height: 135px;
+}
+
+.heart-yellow {
+  left: 43%;
+  top: 75%;
+  width: 140px;
+  height: 140px;
+}
+
+.heart-green {
+  left: 60%;
+  top: 5%;
+  width: 140px;
+  height: 140px;
+}
+
+.heart-pink {
+  left: 59%;
+  top: 63%;
+  width: 140px;
+  height: 140px;
+}
+
+/* 안예뻐서 뺼래....
+.heart-black {
+  left: 55%;
+  top: 76%;
+  width: 135px;
+  height: 135px;
+}*/
+
+.heart-red img {
+  animation-duration: 5.2s;
+  animation-delay: -1s;
+}
+
+.heart-orange img {
+  animation-duration: 6s;
+  animation-delay: -2s;
+}
+
+.heart-yellow img {
+  animation-duration: 5.5s;
+  animation-delay: -3s;
+}
+
+.heart-green img {
+  animation-duration: 6.2s;
+  animation-delay: -1.5s;
+}
+
+.heart-pink img {
+  animation-duration: 5s;
+  animation-delay: -2.5s;
+}
+
+.heart-black img {
+  animation-duration: 6.4s;
+  animation-delay: -3.5s;
+}
+
+/* 하트 모으기 */
+.heart.gathering {
+  z-index: 4;
+  transform: scale(0.05);
+}
+
+.heart.gathering img {
+  animation-play-state: paused;
+}
